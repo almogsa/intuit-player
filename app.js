@@ -13,9 +13,8 @@ app.get("*", (req, res) => {
 const NEW_SONG_EVENT = "newSongEvent";
 const UPDATE_PLAYLIST_EVENT = "updatePlaylistEvent";
 const HISTORY_PLAYLIST_EVENT = "historyPlaylistEvent";
-const UPDATE_SONG_EVENT = "updateSongEvent";
-const GET_HISTORY_EVENT = "getHistoryEvent";
 const LOGIN_EVENT = "login";
+const GET_HISTORY_EVENT = "getHistoryEvent";
 
 let history = [];
 io.on("connection", (socket) => {
@@ -30,7 +29,7 @@ io.on("connection", (socket) => {
         io.emit(NEW_SONG_EVENT, song);
     });
     // get initial data
-    socket.on('GET_HISTORY', () => {
+    socket.on(GET_HISTORY_EVENT, () => {
         io.emit(HISTORY_PLAYLIST_EVENT, history);
     });
 
