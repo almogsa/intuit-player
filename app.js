@@ -16,15 +16,13 @@ const HISTORY_PLAYLIST_EVENT = "historyPlaylistEvent";
 const LOGIN_EVENT = "login";
 const GET_HISTORY_EVENT = "getHistoryEvent";
 
-let history = [
-    'https://www.youtube.com/watch?v=kiqEEr7CK2g'
-];
+let history = [];
 io.on("connection", (socket) => {
     socket.on(LOGIN_EVENT, () => {
         console.log(`Client ${socket.id} connected`);
         socket.join();
         io.emit('ready', history);
-      
+
     })
     // Listen for new song event
     socket.on(NEW_SONG_EVENT, (song) => {
