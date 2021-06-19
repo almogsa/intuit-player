@@ -17,19 +17,14 @@ const LOGIN_EVENT = "login";
 const GET_HISTORY_EVENT = "getHistoryEvent";
 
 let history = [
-    'https://www.youtube.com/watch?v=kiqEEr7CK2g',
-    'https://www.youtube.com/watch?v=AzfZ7hLR17s',
-    'https://www.youtube.com/watch?v=0sMRC1l-INs',
-    'https://www.youtube.com/watch?v=Qk2zGLMmp0s',
-    'https://www.youtube.com/watch?v=ZPCaPOnFoWM'
-
+    'https://www.youtube.com/watch?v=kiqEEr7CK2g'
 ];
 io.on("connection", (socket) => {
     socket.on(LOGIN_EVENT, () => {
         console.log(`Client ${socket.id} connected`);
         socket.join();
         io.emit('ready', history);
-        io.emit(UPDATE_PLAYLIST_EVENT, history);
+      
     })
     // Listen for new song event
     socket.on(NEW_SONG_EVENT, (song) => {
