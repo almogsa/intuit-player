@@ -29,6 +29,7 @@ io.on("connection", (socket) => {
         console.log(`Client ${socket.id} connected`);
         socket.join();
         io.emit('ready', history);
+        io.emit(UPDATE_PLAYLIST_EVENT, history);
     })
     // Listen for new song event
     socket.on(NEW_SONG_EVENT, (song) => {
